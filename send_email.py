@@ -1,9 +1,11 @@
-from re import sub
+# https://support.google.com/accounts/answer/185833
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
+import traceback
 
 import config
 
@@ -34,5 +36,7 @@ def send_email_with_attach(destination=None, subject=None, body=None, attach_pat
         server.send_message(mimemsg)
 
 if __name__ == '__main__':
-    # Para prueba
-    send_email_with_attach('artur.temporal@hotmail.com', 'Test', 'Test', ['/home/bcc/atc19/Captura de tela de 2022-10-26 14-18-28.png'])
+    try:
+        send_email_with_attach('artur.temporal@hotmail.com', 'Test', 'Test', ['/home/bcc/atc19/Captura de tela de 2022-10-26 14-18-28.png'])
+    except:
+        traceback.print_exc()
