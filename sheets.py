@@ -26,11 +26,7 @@ def get_google_sheets_client():
 
 # Extract google_sheets spam users.
 ###################################
-def clear_google_sheets_values():
-    gc = get_google_sheets_client()
-
-    sh = gc.open_by_key(sheet_id)
-
+def clear_google_sheets_values(sh):
     print(sh.values_clear(sheetName+space)) # Clear Cells populated by process.
 
 def update_data_to_sheets(data=None, cust_space=None):
@@ -47,7 +43,7 @@ def update_data_to_sheets(data=None, cust_space=None):
     sh = gc.open_by_key(sheet_id) 
 
     # Clear all data for range
-    clear_google_sheets_values()
+    clear_google_sheets_values(sh)
 
         # Send the update API call
     print(sh.values_update(range=sheetName+cust_space,

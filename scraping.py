@@ -12,8 +12,8 @@ def get_pratos():
     page = requests.get(url)
 
     soup = BeautifulSoup(page.content, "html.parser")
-        
     cardapios = soup.find_all('figure', 'wp-block-table')
+
     hoje = cardapios[0]
     linhas = hoje.find('table').find('tbody').find_all('td')
     for prato in linhas:
@@ -26,7 +26,8 @@ def get_pratos():
 
 if __name__ == '__main__':
     try:
-        get_pratos()
+        pratos = get_pratos()
+        print(pratos)
 
     except Exception:
         traceback.print_exc()

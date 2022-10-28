@@ -21,6 +21,7 @@ def send_email_with_attach(destination=None, subject=None, body=None, attach_pat
     # Para cada attachment na lista
     for mail_attachment in attach_path_list:
         mail_attachment_name = mail_attachment.split('/')[-1]
+        #/home/bcc/atc19/Captura de tela de 2022-10-26 14-18-28.png
 
         with open(mail_attachment, "rb") as attachment:
             mimefile = MIMEBase('application', 'octet-stream')
@@ -37,6 +38,6 @@ def send_email_with_attach(destination=None, subject=None, body=None, attach_pat
 
 if __name__ == '__main__':
     try:
-        send_email_with_attach('artur.temporal@hotmail.com', 'Test', 'Test', ['/home/bcc/atc19/Captura de tela de 2022-10-26 14-18-28.png'])
+        send_email_with_attach('artur.temporal@hotmail.com', 'Test', 'Test',)
     except:
         traceback.print_exc()
